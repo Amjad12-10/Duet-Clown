@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    //----- rotation speed
+    // ------------------------------------- rotation speed
     [SerializeField] private float Rotationspeed = 2;
     [SerializeField] private float Controllerspeed = 5;
     [SerializeField] private GameObject ControllerChild;
-    //------- Dead
+    // ------------------------------------- Dead
     private Vector3 startposition = Vector3.zero;
     public bool isdead;
 
     void Update()
     {
+        // --------------------------------- if dot,did hit
         if (!isdead)
         {
-            // ---- Player inputs
+            // ----------------------------- Player inputs
             if (Input.GetMouseButton(0))
             {
-                // ---- Left
+                // ------------------------- Left
                 if (Input.mousePosition.x < Screen.width / 2)
                 {
                     ControllerChild.transform.Rotate(new Vector3(0, 0, 180) * Time.deltaTime * Rotationspeed);
                 }
-                // ---- Right
+                // ------------------------- Right
                 if (Input.mousePosition.x > Screen.width / 2)
                 {
                     ControllerChild.transform.Rotate(new Vector3(0, 0, -180) * Time.deltaTime * Rotationspeed);
@@ -32,6 +33,7 @@ public class Controller : MonoBehaviour
             }
             transform.position += Vector3.up * Controllerspeed * Time.deltaTime;
         }
+        // --------------------------------- if dot,do not hit
         else
         {
             var moveback = Vector3.Lerp(this.transform.position, startposition, Time.deltaTime * (Controllerspeed/2));
@@ -41,9 +43,6 @@ public class Controller : MonoBehaviour
             {
                 isdead = false;
             }
-
         }
-
-
     }
 }
