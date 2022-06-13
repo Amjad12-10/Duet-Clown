@@ -5,19 +5,22 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject Cube;
-    // Start is called before the first frame update
+    private int[] RandomPosition = {-4,0,4};
+    private int spawnnumber;
+
+    [SerializeField]private List<GameObject> spawnnedchilds;
     void Start()
     {
-        InvokeRepeating("Spawn",1.5f,1.5f);
+        InvokeRepeating("Spawn",2f,2f);
+        spawnnedchilds.Add(this.gameObject);
     }
     private void Spawn() 
     {
-
-        int RandomPosX = Random.Range(-4, 4);
         GameObject newInstace = Instantiate(Cube);
-        newInstace.transform.SetParent(this.transform);
-        newInstace.transform.localPosition = new Vector3(RandomPosX, 0);
-        newInstace.transform.localScale = new Vector3(4,(int)Random.Range(2,10));
-        Destroy(newInstace, 5);
+        int RandomPosX = Random.Range(0,RandomPosition.Length);
+        spawnnumber++;
+        spawnnedchilds.Add(newInstace);
+        newInstace.transform.localPosition = new Vector3(RandomPosition[RandomPosX], this.transform.localPosition.y + spawnnedchilds[spawnnedchilds.IndexOf(newInstace)-1].transform.localPosition.y);
+        //Destroy(newInstace, 5);
     }
 }

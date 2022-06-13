@@ -6,22 +6,18 @@ public class test : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float x_offset;
-    private float x_scale;
-    // Start is called before the first frame update
+    private float x_scale = 4;
+    private int Ran;
     void Start()
     {
-        x_scale = transform.localScale.x;
-
+         Ran = (int)Random.Range(2,4);
+        transform.localScale = new Vector3(4,Ran);
+        Debug.Log(Ran);
     }
 
-    // Update is called once per frame
     void Update()
     {
         float _time = Mathf.PingPong(Time.time*speed,x_offset);
-        transform.localScale = new Vector3(_time+x_scale, 1);
-        Debug.Log(_time);
-
-        transform.position -= Vector3.up * 10 * Time.deltaTime;
-
+        transform.localScale = new Vector3(_time+x_scale,Ran);
     }
 }
