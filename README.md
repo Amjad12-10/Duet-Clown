@@ -4,8 +4,8 @@
 - if you want to open in your unity version, then just keep Assets folder and you can delete the rest of the folder and just open the folder containing only Assets
 
 # Recording
+
 <div align="center">
 
-
-https://user-images.githubusercontent.com/75468288/173307036-0a7cb70e-b170-4faa-b1fa-060f82fe332f.mp4
+https://user-images.githubusercontent.com/75468288/173566493-ced87c81-4e42-41e0-b443-56be348412c7.mp4
 </div>
